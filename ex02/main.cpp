@@ -6,14 +6,14 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:31:39 by amorion-          #+#    #+#             */
-/*   Updated: 2022/06/26 11:52:52 by amorion-         ###   ########.fr       */
+/*   Updated: 2022/08/14 10:08:46 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Array.hpp"
 
-#define MAX_VAL 750
+#define MAX_VAL 10
 
 /*void ft_leaks()
 {
@@ -36,7 +36,6 @@ int main(int, char**)
 	}
 
 	{
-		std::cout << "******Given Main ******\n";
     	Array<int> numbers(MAX_VAL);
     	int* mirror = new int[MAX_VAL];
     	srand(time(NULL));
@@ -44,14 +43,8 @@ int main(int, char**)
     	{
         	const int value = rand();
         	numbers[i] = value;
-        	mirror[i] = value;
+			mirror[i] = value;
     	}
-    	//SCOPE
-    	{
-        	Array<int> tmp = numbers;
-        	Array<int> test(tmp);
-    	}
-
     	for (int i = 0; i < MAX_VAL; i++)
     	{
         	if (mirror[i] != numbers[i])
@@ -60,6 +53,7 @@ int main(int, char**)
             	return 1;
         	}
     	}
+		std::cout << "The assignment was correct\n";
     	try
     	{
         	numbers[-2] = 0;
@@ -79,10 +73,12 @@ int main(int, char**)
 
     	for (int i = 0; i < MAX_VAL; i++)
     	{	
+			std::cout << "Antes: "<< numbers[i] << " Después: ";
         	numbers[i] = rand();
+			std::cout << numbers[i] << std::endl;
     	}
     	delete [] mirror;//
 	}
-    ft_leaks();
+    //ft_leaks();
 	return 0;
 }
